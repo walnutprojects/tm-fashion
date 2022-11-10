@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_config_view_form" model="ir.ui.view">
+        <field name="name">pos.config.form.view.inherit</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <div id="accounting_section" position="after">
+                <h2>Ocean API</h2>
+                <div class="row mt16 o_settings_container">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="is_ocean_api"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="is_ocean_api" string="Use for Ocean API"/>
+                            <div class="text-muted">
+                                System POS for orders using Ocean API.
+                            </div>
+                        </div>
+                        <div class="o_setting_right_pane" attrs="{'invisible':[('is_ocean_api', '=',False)]}">
+                            <span class="o_form_label">Product Category</span>
+                            <div class="text-muted">
+                                Category for Products imported with Ocean Orders
+                            </div>
+                            <field name="ocean_product_category_id"
+                                   options="{'no_create': True, 'no_edit': True}"
+                                   attrs="{'required':[('is_ocean_api','=',True)]}"/>
+                        </div>
+                        <div class="o_setting_right_pane" attrs="{'invisible':[('is_ocean_api', '=',False)]}">
+                            <span class="o_form_label">Last imported on</span>
+                            <div class="text-muted">
+                                Only orders modified after this date will be imported
+                            </div>
+                            <field name="date_last_imported" attrs="{'required':[('is_ocean_api','=',True)]}"/>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible':[('is_ocean_api', '=',False)]}">
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">API Server</span>
+                            <div class="text-muted">
+                                Ocean API Server URL
+                            </div>
+                            <field name="ocean_server_url" attrs="{'required':[('is_ocean_api','=',True)]}"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">Authorization Keys</span>
+                            <div class="text-muted">
+                                Private Key
+                            </div>
+                            <field name="ocean_private_key" password="True"
+                                   attrs="{'required':[('is_ocean_api','=',True)]}"/>
+                            <div class="text-muted">
+                                Public Key
+                            </div>
+                            <field name="ocean_public_key" password="True"
+                                   attrs="{'required':[('is_ocean_api','=',True)]}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </field>
+    </record>
+</odoo>

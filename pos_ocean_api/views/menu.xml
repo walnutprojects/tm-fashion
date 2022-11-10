@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem id="ocean_api_root" name="Ocean API" parent="point_of_sale.menu_point_config_product"
+                  sequence="100" groups="group_ocean_api"/>
+
+    </data>
+</odoo>

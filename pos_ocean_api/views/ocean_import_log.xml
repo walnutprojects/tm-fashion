@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="ocean_import_log_view_form" model="ir.ui.view">
+            <field name="name">ocean.import.log_view_form</field>
+            <field name="model">ocean.import.log</field>
+            <field name="arch" type="xml">
+                <form string="Ocean Import Log" create="false" edit="false" delete="false" duplicate="false">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="create_date"/>
+                                <field name="user_id"/>
+                                <field name="checksum"/>
+                            </group>
+                            <group>
+                                <field name="update_done"/>
+                                <field name="order_id"/>
+                                <field name="company_id" groups="base.group_multi_company"/>
+                            </group>
+                            <group string="JSON Data">
+                                <field name="json_data" nolabel="1"/>
+                            </group>
+                            <group string="Error Messages">
+                                <field name="error_messages" nolabel="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="ocean_import_log_view_tree" model="ir.ui.view">
+            <field name="name">ocean_import_log_view_tree</field>
+            <field name="model">ocean.import.log</field>
+            <field name="arch" type="xml">
+                <tree string="Ocean Import Logs" create="false" edit="false" delete="false" duplicate="false">
+                    <header>
+                        <button string="Synchronize" type="object" name="synchronize_ocean_orders"/>
+                    </header>
+                    <field name="create_date"/>
+                    <field name="user_id"/>
+                    <field name="checksum"/>
+                    <field name="update_done"/>
+                    <field name="order_id"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                    <button string="Synchronize" type="object" attrs="{'invisible':[('update_done','=',True)]}"
+                            class="btn btn-link" icon="fa-save" name="synchronize_ocean_orders"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="ocean_import_log_action" model="ir.actions.act_window">
+            <field name="name">Import Logs</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ocean.import.log</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ocean_import_log_menu" parent="ocean_api_root"
+                  action="ocean_import_log_action" sequence="20"/>
+
+    </data>
+</odoo>
