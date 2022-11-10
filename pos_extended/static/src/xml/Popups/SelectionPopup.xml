@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="SelectionPopup" t-inherit="point_of_sale.SelectionPopup" t-inherit-mode="extension" owl="1">
+        <xpath expr="//footer/div[hasclass('cancel')]" position="before">
+            <div t-if="props.clear" class="button clear" t-on-click="clear">
+                <t t-esc="props.clearText"/>
+            </div>
+        </xpath>
+    </t>
+</templates>

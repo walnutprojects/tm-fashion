@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template_custom_latest_extended" inherit_id="point_of_sale.template" xml:space="preserve">
+	<t t-name="TicketScreen" t-inherit="point_of_sale.TicketScreen" t-inherit-mode="extension" owl="1">
+		<xpath expr="//div[hasclass('header-row')]" position="inside">
+            <div t-if="showRefundAnotherStoreFeature()" class="col">POS</div>
+			<div t-if="isSyncedOrdersScreen()" class="col">Payments</div>
+            <div class="col"></div>
+		</xpath>
+        <xpath expr="//div[hasclass('order-row')]" position="inside">
+			<div class="col" t-if="showRefundAnotherStoreFeature()">
+				<div t-if="env.isMobile"></div>
+                <div > <t t-esc="order.pos_config || 'Current'"/> </div>
+			</div>
+			<div class="col">
+				<div t-if="env.isMobile"></div>
+                <div t-if="isSyncedOrdersScreen()"> <t t-esc="getPaymentMethodsName(order)"/> </div>
+			</div>
+            <div class="col">
+				<div t-if="env.isMobile"></div>
+                <div t-if="showUpdateOrderBtn(order)"><button name="updateOrder" class="btn" t-on-click="trigger('click-update-order', order)">Update</button></div>
+			</div>
+		</xpath>
+        <xpath expr="//SearchBar" position="after">
+			<div t-if="showRefundAnotherStoreFeature()" class="buttons">
+				<button class="search-other-pos" t-on-click="trigger('click-search-other-pos')">
+					Search Another Store
+				</button>
+			</div>
+		</xpath>
+	</t>
+</templates>

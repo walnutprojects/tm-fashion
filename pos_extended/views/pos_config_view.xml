@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="pos_config_view_extended">
+            <field name="name">pos.config.form.extended.view</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@id='title']" position="before">
+                    <field name="pos_logo" widget="image" class="oe_avatar"/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                </xpath>
+                <xpath expr="//div[4]" position="after">
+                    <h2>Refund</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="refund_other_pos_orders"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="refund_other_pos_orders"/>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="set_og_cashier_for_refund"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="set_og_cashier_for_refund"/>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="allow_cashier_change_refund_orders"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="allow_cashier_change_refund_orders"/>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <h2>Features</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div id="merge_div" class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="merge_orderline"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="merge_orderline"/>
+                            </div>
+                        </div>
+                        <div id="barcode_div" class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="show_barcode"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="show_barcode" string='Show Barcode in Receipt'/>
+                            </div>
+                        </div>
+                        <div id="extended_order_container" class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="extended_order_container"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="extended_order_container"/>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                </xpath>
+                <xpath expr="//div[@id='accounting_section']/div/div/div[hasclass('content-group')]" position="inside">
+                    <div class="row mt16"
+                         title="Whenever you close a session, one entry is generated in the following accounting journal for all the payment commissions.">
+                        <label string="Commissions Journal" for="commission_journal_id" class="col-lg-3 o_light_label"
+                               options="{'no_open': True, 'no_create': True}"/>
+                        <field name="commission_journal_id" required="1"
+                               domain="[('company_id', '=', company_id), ('type', 'in', ('general', 'sale'))]"
+                               context="{'default_company_id': company_id, 'default_type': 'general'}"/>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

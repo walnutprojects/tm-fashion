@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_report_pos_order_search_inherit_extended" model="ir.ui.view">
+        <field name="name">report.pos.order.search.inherit.extended</field>
+        <field name="model">report.pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_report_pos_order_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='User']" position='after'>
+                <filter string="Return Reason" name="return_reason_id" domain="[]"
+                        context="{'group_by':'return_reason_id'}"/>
+                <filter string="Department" name="product_department_id" domain="[]"
+                        context="{'group_by':'product_department_id'}"/>
+                <filter string="Brand" name="product_brand_id" domain="[]"
+                        context="{'group_by':'product_brand_id'}"/>
+                <filter string="Vendor" name="default_vendor_id" domain="[]"
+                        context="{'group_by':'default_vendor_id'}"/>
+                <filter string="Customer Mobile" name="mobile" domain="[]"
+                        context="{'group_by':'mobile'}"/>
+                <filter string="Customer Phone" name="phone" domain="[]"
+                        context="{'group_by':'phone'}"/>
+                <!--                <filter string="Qty on Hand" name="qty_available" domain="[]"-->
+                <!--                        context="{'group_by':'qty_available'}"/>-->
+            </xpath>
+        </field>
+    </record>
+</odoo>
+

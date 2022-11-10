@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="pos_agent_template" inherit_id="point_of_sale.template" xml:space="preserve">
+	<t t-name="SetReturnReasonButton" owl="1">
+        <div class="control-button o_return_reason_button">
+            <i class="fa fa-note" role="img" aria-label="Return Reason"
+               title="Return Reason"/>
+            Return Reason
+        </div>
+    </t>
+</templates>
+
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_payment_method_view_form_inherit_pos_extended" model="ir.ui.view">
+        <field name="name">pos.payment.method.form.inherit.extended</field>
+        <field name="model">pos.payment.method</field>
+        <field name="inherit_id" ref="point_of_sale.pos_payment_method_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='split_transactions']" position="before">
+                <field name="note_required"/>
+                <field name="restrict_close_with_balance"/>
+            </xpath>
+            <xpath expr="//field[@name='receivable_account_id']" position="after">
+                <field name="commission_type"/>
+                <field name="commission" attrs="{'invisible':[('commission_type', '=', False)]}"/>
+                <field name="commission_account_id"
+                       attrs="{'invisible':[('commission_type', '=', False)], 'required':[('commission_type','!=',False)]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

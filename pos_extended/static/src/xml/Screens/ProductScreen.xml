@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="pos_extended_product_screen">
+    <t t-extend="Orderline" t-inherit="point_of_sale.Orderline" t-inherit-mode="extension" owl="1">
+        <xpath expr="//ul[hasclass('info-list')]" position="inside">
+            <t t-if="returnReason">
+                <li class="info">
+                    <span>Return Reason:</span>
+                    <em>
+                        <t t-esc="returnReason.name"/>
+                    </em>
+                </li>
+            </t>
+        </xpath>
+    </t>
+
+    <t t-name="OrderSummary" t-inherit="point_of_sale.OrderSummary" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('summary')]//div[hasclass('line')]" position="before">
+            <ProductQuantityCounter/>
+        </xpath>
+    </t>
+    <!--    <t t-name="ProductScreen" t-inherit="point_of_sale.ProductScreen" t-inherit-mode="extension" owl="1">-->
+    <!--        <xpath expr="//div[hasclass('subpads')]" position="replace">-->
+    <!--        </xpath>-->
+    <!--        <xpath expr="//ProductsWidget" position="after">-->
+    <!--            <div class="pads">-->
+    <!--                <div class="control-buttons">-->
+    <!--                    <t t-if="env.isMobile and controlButtons.length > 3">-->
+    <!--                        <div class="control-button" t-on-click="_displayAllControlPopup">More...</div>-->
+    <!--                    </t>-->
+    <!--                    <t t-else="">-->
+    <!--                        <t t-foreach="controlButtons" t-as="cb" t-key="cb.name">-->
+    <!--                            <t t-component="cb.component" t-key="cb.name"/>-->
+    <!--                        </t>-->
+    <!--                    </t>-->
+    <!--                </div>-->
+    <!--                <div class="subpads">-->
+    <!--                    <t t-set="_actionName">Payment</t>-->
+    <!--                    <ActionpadWidget client="client" actionName="_actionName" t-on-switchpane="switchPane"/>-->
+    <!--                    <NumpadWidget activeMode="state.numpadMode"/>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </xpath>-->
+    <!--    </t>-->
+</templates>
+
+

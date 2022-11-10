@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="pos_return_reason_form" model="ir.ui.view">
+        <field name="name">pos.return.reason</field>
+        <field name="model">pos.return.reason</field>
+        <field name="arch" type="xml">
+            <form string="Reason">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="pos_return_reason_tree" model="ir.ui.view">
+        <field name="name">pos.return.reason</field>
+        <field name="model">pos.return.reason</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_pos_return_reason">
+        <field name="name">Return Reasons</field>
+        <field name="res_model">pos.return.reason</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+            name="Return Reasons"
+            id="menu_pos_return_reason"
+            action="action_pos_return_reason"
+            parent="point_of_sale.menu_point_config_product"
+            sequence="5"/>
+    />
+</odoo>

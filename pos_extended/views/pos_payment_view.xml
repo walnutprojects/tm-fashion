@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_payment_view_form_inherit_pos_extended" model="ir.ui.view">
+        <field name="name">pos.payment.form.inherit.extended</field>
+        <field name="model">pos.payment</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_payment_form"/>
+        <field name="arch" type="xml">
+            <field name="session_id" position="after">
+                <field name="note"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="pos_payment_view_form_inherit_group_pl_update" model="ir.ui.view">
+        <field name="name">pos.payment.form.inherit.extended</field>
+        <field name="model">pos.payment</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_payment_form"/>
+        <field name="groups_id" eval="[(4, ref('pos_extended.group_pos_payment_lines_update'))]"/>
+        <field name="arch" type="xml">
+            <field name="payment_method_id" position="before">
+                <field name="order_state" invisible="1"/>
+            </field>
+            <field name="pos_order_id" position="attributes">
+                <attribute name="readonly">0</attribute>
+                <attribute name="attrs">{'readonly': [('order_state','in',('done', 'invoiced'))]}</attribute>
+                <attribute name="domain">[('id','=', context.get('default_pos_order_id', False))]</attribute>
+            </field>
+            <field name="payment_method_id" position="attributes">
+                <attribute name="readonly">0</attribute>
+                <attribute name="attrs">{'readonly': [('order_state','in',('done', 'invoiced'))]}</attribute>
+            </field>
+            <field name="amount" position="attributes">
+                <attribute name="readonly">0</attribute>
+                <attribute name="attrs">{'readonly': [('order_state','in',('done', 'invoiced'))]}</attribute>
+            </field>
+            <field name="card_type" position="attributes">
+                <attribute name="readonly">0</attribute>
+                <attribute name="attrs">{'readonly': [('order_state','in',('done', 'invoiced'))]}</attribute>
+            </field>
+            <field name="cardholder_name" position="attributes">
+                <attribute name="readonly">0</attribute>
+                <attribute name="attrs">{'readonly': [('order_state','in',('done', 'invoiced'))]}</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>

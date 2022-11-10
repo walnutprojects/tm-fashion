@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="pos_order_view_extended" model="ir.ui.view">
+            <field name="name">pos.order.form.extended.view</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="arch" type="xml">
+                <field name="session_id" position="after">
+                    <field name="sale_type"/>
+                </field>
+                <field name="pos_reference" position="after">
+                    <field string="Barcode" name="barcode_number"/>
+                </field>
+                <xpath expr="//field[@name='lines']//tree/field[@name='discount']" position="after">
+                    <field name="discount_amount" optional="show"/>
+                    <field name="return_reason_id" optional="show"/>
+                    <field name="employee_id" optional="hide"/>
+                </xpath>
+                <xpath expr="//field[@name='amount_tax']" position="after">
+                    <label for="discount_amount" string="Discount"/>
+                    <div class="text-nowrap">
+                        <field name="discount_amount" class="oe_inline"/>
+                        <span class="oe_inline">
+                            (<field name="discount" nolabel="1" class="oe_inline" widget="percentage"/>)
+                        </span>
+                    </div>
+                </xpath>
+                <xpath expr="//label[@for='margin']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//group[@name='order_total']/div[2]" position="attributes">
+                    <attribute name="groups">pos_extended.group_pos_margin</attribute>
+                </xpath>
+
+                <field name="payment_ids" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </field>
+            </field>
+        </record>
+
+        <record id="pos_order_view_inherit_group_pl_update" model="ir.ui.view">
+            <field name="name">pos.order.form.extended.view</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="groups_id" eval="[(4, ref('pos_extended.group_pos_payment_lines_update'))]"/>
+            <field name="arch" type="xml">
+                <field name="payment_ids" position="attributes">
+                    <attribute name="context">{'default_pos_order_id': active_id}</attribute>
+                </field>
+                <field name="payment_ids" position="attributes">
+                    <attribute name="readonly">0</attribute>
+                    <attribute name="attrs">{'readonly': [('state','in',('done', 'invoiced'))]}</attribute>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

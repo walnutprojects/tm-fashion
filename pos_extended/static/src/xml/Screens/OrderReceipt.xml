@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template_custom_latest_extended" inherit_id="point_of_sale.template" xml:space="preserve">
+	<t t-name="OrderReceipt" t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension" owl="1">
+		<xpath expr="//img[hasclass('pos-receipt-logo')]" position="replace">
+			<t t-if='env.pos.config.pos_logo'>
+				<img class="pos-receipt-logo" t-att-src="'data:image/png;base64,'+env.pos.config.pos_logo" alt="Logo"/>
+                <br/>
+			</t>
+		</xpath>
+        <xpath expr="//h2[hasclass('pos-receipt-center-align')]" position="replace">
+			<h2 class="pos-receipt-center-align"></h2>
+		</xpath>
+        <xpath expr="//div[hasclass('pos-receipt-contact')]" position="replace">
+			<div class="pos-receipt-contact">
+				<t t-if="receipt.header_html">
+					<t t-raw="receipt.header_html"/></t>
+                <t t-if="!receipt.header_html and receipt.header">
+					<div style="white-space:pre-line">
+						<t t-esc="receipt.header"/>
+					</div>
+				</t>
+                <t t-if="receipt.cashier">
+					<div class="cashier">
+						<div>--------------------------------</div>
+                        <div>Served by
+							<t t-esc="receipt.cashier"/>
+						</div>
+					</div>
+				</t>
+			</div>
+		</xpath>
+        <xpath expr="//t[@t-foreach='receipt.paymentlines']" position="before">
+			<div t-if="receipt.total_sale_qty" class="pos-receipt-center-align">Total Quantity: <t t-esc="receipt.total_sale_qty"/> </div>
+            <div t-if="receipt.total_refund_qty" class="pos-receipt-center-align">Total Refund Quantity: <t t-esc="receipt.total_refund_qty"/> </div>
+			<t t-if="receipt.total_sale_qty or receipt.total_refund_qty">
+				<br/><br/>
+			</t>
+		</xpath>
+        <xpath expr="//div[hasclass('pos-receipt-order-data')]" position="after">
+			<div class="barcode-container" t-if="env.pos.config.show_barcode">
+				<canvas style="margin:auto;margin-top:10px;" class="barcode" t-att-data-code="receipt.barcode" t-att-data-width="1.5"></canvas>
+			</div>
+		</xpath>
+	</t>
+</templates>

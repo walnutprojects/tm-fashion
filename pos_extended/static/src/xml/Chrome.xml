@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+	<t t-extend="Chrome" t-inherit="point_of_sale.Chrome" t-inherit-mode="extension" owl="1">
+		<xpath expr="//CashMoveButton" position="before">
+			<OrderModeButton t-if="showOrderModeButton()"/>
+		</xpath>
+		<!-- POS Logo Change -->
+		<xpath expr="//img[hasclass('pos-logo')]" position="replace">
+			<t t-if="env.pos and env.pos.config and env.pos.config.pos_logo">
+				<img class="pos-logo" t-on-click="trigger('toggle-debug-widget')"
+                         t-att-src="'data:image/png;base64,'+env.pos.config.pos_logo" alt="Logo"
+                         style="width: 80px;height: 40px;vertical-align: top;"/>
+			</t>
+			<t t-else="">
+				<img class="pos-logo" t-on-click="trigger('toggle-debug-widget')"
+                         src="/point_of_sale/static/src/img/logo.png" alt="Logo"/>
+			</t>
+		</xpath>
+	</t>
+</templates>

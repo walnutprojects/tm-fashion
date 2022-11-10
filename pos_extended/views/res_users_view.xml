@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_users_form_pos_extended" model="ir.ui.view">
+            <field name="name">res.users.form.pos.extended</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='access_rights']" position="after">
+                    <page name="pos" string="Point Of Sale">
+                        <group string="Visibility">
+                            <field name="show_cost_info_pos"/>
+                            <field name="show_all_wh_info_pos"/>
+                            <field name="show_discount_btn_pos"/>
+                            <field name="show_price_btn_pos"/>
+                            <field name="show_delete_btn_pos"/>
+                            <field name="show_sign_change_btn_pos"/>
+                            <field name="show_refund_btn_pos"/>
+                            <field name="show_cash_move_btn_pos"/>
+                            <field name="show_money_adjustment_pos"/>
+                        </group>
+                        <group string="Others">
+                            <field name="access_other_users_session_pos"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

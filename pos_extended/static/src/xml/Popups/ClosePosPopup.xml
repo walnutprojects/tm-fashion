@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="ClosePosPopup" t-inherit="point_of_sale.ClosePosPopup" t-inherit-mode="extension" owl="1">
+        <xpath expr="//header" position="replace">
+            <header class="title">
+                <span>CLOSING CONTROL</span>
+                <div class="button money-adjustment" t-on-click="moneyAdjustment()">Money Adjustment</div>
+            </header>
+        </xpath>
+        <xpath expr="//t[@t-if='cashControl']/tbody/tr/td[1]" position="replace">
+            <td>
+                <t t-esc="defaultCashDetails.name"/>
+                <span class="filter-payment-method-orders fa fa-filter"
+                      t-on-click="filterPaymentOrders(defaultCashDetails.name)"/>
+            </td>
+        </xpath>
+        <xpath expr="//tr[@t-foreach='otherPaymentMethods']/td[1]" position="replace">
+            <td>
+                <t t-esc="pm.name"/>
+                <span class="filter-payment-method-orders fa fa-filter" t-on-click="filterPaymentOrders(pm.name)"/>
+            </td>
+        </xpath>
+    </t>
+</templates>

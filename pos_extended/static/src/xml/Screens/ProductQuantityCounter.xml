@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="ProductQuantityCounter" owl="1">
+        <t t-if="order">
+            <div class='product-quantity-counter'>
+                <span> Total Quantity: <t t-esc="get_total_sale_quantity()"/></span>
+                <span t-if="get_total_refund_quantity()"> Total Refund Quantity: <t t-esc="get_total_refund_quantity()"/></span>
+            </div>
+        </t>
+        <t t-else="">
+            <div></div>
+        </t>
+    </t>
+
+ </templates>

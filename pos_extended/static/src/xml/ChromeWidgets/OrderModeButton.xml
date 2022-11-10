@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="point_of_sale.OrderModeButton" owl="1">
+        <div class="order-mode-button">
+            <i class="fa-solid fa-light-switch" aria-hidden="true"></i>
+            <span style="padding-left: 10px;"><t t-esc="current_order_mode"/></span>
+        </div>
+    </t>
+
+</templates>
