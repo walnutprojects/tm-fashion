@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="UpdatePaymentPopup" owl="1">
+        <div role="dialog" class="modal-dialog">
+            <Draggable>
+                <div class="popup drag-handle update-payment" style="max-width: 931px;">
+                    <header class="title">
+                        Update Payment For <t t-esc="props.order.name"/>
+                    </header>
+                    <main class="body">
+                        <div class="payment-details">
+                            <table class="table">
+                                <thead>
+                                    <th>Current Payment Method</th>
+                                    <th>Current Amount</th>
+                                    <th>New Payment Method</th>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="paymentLines" t-as="pl" class="payment-line">
+                                    <td><t t-esc="pl.payment_method.name"/></td>
+                                    <td><t t-esc="pl.amount.toFixed(2)"/></td>
+                                    <td>
+                                        <select name="payment_method_id">
+                                            <t t-foreach="payment_methods_from_config" t-as="paymentMethod"
+                                               t-key="paymentMethod.id">
+                                                <option t-att-value="paymentMethod.id"><t t-esc="paymentMethod.name"/></option>
+                                            </t>
+                                        </select>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </main>
+                    <footer class="footer">
+                        <div class="button confirm disable" t-on-click="confirm">
+                            Confirm
+                        </div>
+                        <div class="button cancel" t-on-click="cancel">
+                            Cancel
+                        </div>
+                    </footer>
+                </div>
+            </Draggable>
+        </div>
+    </t>
+
+</templates>

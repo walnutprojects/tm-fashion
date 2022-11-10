@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_label_layout_form_pricelist" model="ir.ui.view">
+        <field name="name">product.label.layout.form</field>
+        <field name="model">product.label.layout</field>
+        <field name="mode">extension</field>
+        <field name="priority">25</field>
+        <field name="inherit_id" ref="product.product_label_layout_form"/>
+        <field name="arch" type="xml">
+            <field name="extra_html" position="before">
+                <field name="pricelist_id" options="{'no_open': True, 'no_create': True}"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

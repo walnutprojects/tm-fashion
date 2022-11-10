@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pos_return_reason,pos.return.reason,model_pos_return_reason,point_of_sale.group_pos_user,1,1,1,1
+stock_production_lot_pos_user,stock.production.lot.pos.user,stock.model_stock_production_lot,point_of_sale.group_pos_user,1,0,0,0
+account_move_pos_user,account.move.pos.user,account.model_account_move,point_of_sale.group_pos_user,1,1,1,0
+account_move_line_pos_user,account.move.line.pos.user,account.model_account_move_line,point_of_sale.group_pos_user,1,1,0,0
+access_pos_details_wizard_user,access.pos.details.wizard.user,point_of_sale.model_pos_details_wizard,point_of_sale.group_pos_user,1,1,1,0

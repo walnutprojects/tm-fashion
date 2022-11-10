@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="res_config_settings_view_form_extended" model="ir.ui.view">
+        <field name="name">res.config.settings.extended</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="product.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='product_general_settings']" position="inside">
+            </xpath>
+            <xpath expr="//div[@id='product_general_settings']" position="after">
+                <h2>Products</h2>
+                <div class="row mt16 o_settings_container" id="product_settings">
+                    <div class="col-12 col-lg-6 o_setting_box" id="product_departments">
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">Departments</span>
+                            <div class="text-muted">
+                                Configure your Departments
+                            </div>
+                            <div class="content-group">
+                                <div class="mt8">
+                                    <button name="%(product_extended.action_product_department)d" string="Departments"
+                                            type="action" class="oe_link" icon="fa-arrow-right"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box" id="product_departments">
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">Tags</span>
+                            <div class="text-muted">
+                                Configure product tags
+                            </div>
+                            <div class="content-group">
+                                <div class="mt8">
+                                    <button name="%(product_extended.action_product_tags)d" string="Tags"
+                                            type="action" class="oe_link" icon="fa-arrow-right"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box" id="auto_product_sequence_setting">
+                        <div class="o_setting_right_pane">
+                            <label for="auto_assign_internal_reference" string="Auto Internal Sequence"/>
+                            <div class="text-muted">
+                                Enable Auto Sequence in Product
+                            </div>
+                            <div class="content-group">
+                                <div class="mt16">
+                                    <field name="auto_assign_internal_reference" class="o_light_label"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

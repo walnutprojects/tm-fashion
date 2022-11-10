@@ -1,0 +1,238 @@
+.pos .rightpane .pads {
+    border-top: solid 3px rgb(110, 200, 155);
+}
+
+.pos .rightpane .pads .subpads {
+    display: flex;
+    flex-direction: row;
+    width: 600px;
+}
+
+.order-mode-button {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    font-size: medium;
+    color: white;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+
+.sale-order-info td {
+    padding-right: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.order-management-screen .flex-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.order-management-screen .control-panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem;
+}
+
+.order-management-screen .control-panel .item {
+    font-size: medium;
+}
+
+.order-management-screen .control-panel .search-box {
+    flex: 1;
+    position: relative;
+    text-align: center;
+    margin: 0.2rem;
+}
+
+.order-management-screen .control-panel .search-box .clear {
+    position: relative;
+    right: 25px;
+    cursor: pointer;
+    color: #808080;
+    font-size: 13px;
+}
+
+.order-management-screen .control-panel .search-box .icon {
+    position: relative;
+    left: 25px;
+    color: #808080;
+    font-size: 13px;
+}
+
+.order-management-screen .control-panel .search-box input {
+    border: 1px solid #cecbcb;
+    padding: 10px 30px;
+    margin: auto;
+    background-color: white;
+    border-radius: 20px;
+    font-family: "Lato", "Lucida Grande", Helvetica, Verdana, Arial;
+    font-size: 13px;
+}
+
+.order-management-screen .control-panel .search-box input:focus {
+    outline: none;
+    box-shadow: 0px 0px 0px 2px rgb(153, 153, 255) inset;
+    color: rgb(153, 153, 255);
+}
+
+.order-management-screen .control-panel .button {
+    line-height: 32px;
+    padding: 3px 13px;
+    font-size: 20px;
+    background: rgb(230, 230, 230);
+    border-radius: 3px;
+    border: solid 1px rgb(209, 209, 209);
+    cursor: pointer;
+    transition: all 150ms linear;
+}
+
+.order-management-screen .control-panel .button:hover {
+    background: #efefef;
+}
+
+.order-management-screen .back-to-list {
+    font-size: large;
+    padding: 10px;
+    background-color: #6EC89B;
+    color: white;
+}
+
+.order-management-screen .orders .action button {
+    font-size: 15px !important;
+}
+
+.btn-big {
+    background-color: #77405d !important;
+    color: #fff;
+    width: 90%;
+}
+
+.actionpad button.pay:disabled {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.popup.refund-voucher input {
+    width: 100%;
+}
+
+.popup.refund-voucher footer div, .popup.payment-note footer div {
+    background: #875a7b !important;
+    color: #ffff;
+}
+
+/*Update Payment Popup*/
+
+.update-payment .table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+}
+
+.update-payment .table th,
+.update-payment .table td {
+    padding: 0.75rem;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+}
+
+.update-payment .table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.update-payment .table tbody + tbody {
+    border-top: 2px solid #dee2e6;
+}
+
+.update-payment select {
+    text-align: left;
+    display: inline-block;
+    overflow: hidden;
+    background: white;
+    min-height: 44px;
+    font-family: "Lato";
+    font-size: 20px;
+    color: #444;
+    padding: 10px;
+    border-radius: 3px;
+    border: none;
+    box-shadow: 0px 0px 0px 1px rgb(220 220 220) inset;
+    box-sizing: border-box;
+    width: 80%;
+}
+
+/* Discount Popup */
+
+.popup.popup-discount {
+    height: 510px !important;
+}
+
+.popup.popup-discount select {
+    text-align: center;
+    display: inline-block;
+    overflow: hidden;
+    background: white;
+    min-height: 44px;
+    font-family: "Lato";
+    font-size: 20px;
+    color: #444;
+    padding: 10px;
+    border-radius: 3px;
+    border: none;
+    box-shadow: 0px 0px 0px 1px rgb(220 220 220) inset;
+    box-sizing: border-box;
+    width: 80%;
+    margin-bottom: 12px;
+}
+
+.popup.popup-discount select:focus {
+    outline: none;
+    box-shadow: 0px 0px 0px 3px #6ec89b;
+}
+
+.popup.close-pos-popup header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup.close-pos-popup header .button {
+    width: 200px;
+    margin: 0;
+}
+
+.pos-receipt .barcode-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-quantity-counter {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    margin-left: 20px;
+    float: left;
+    padding: 10px;
+    max-width: 216px;
+    text-align: left;
+    color: #6EC89B;
+    border-radius: 3px;
+}
+
+.pos .notification {
+    z-index: 1000 !important;
+}
+
+.filter-payment-method-orders {
+    cursor: pointer;
+    margin-left: 5px;
+    color: #6EC89B;
+}

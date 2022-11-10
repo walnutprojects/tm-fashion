@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="product_pricelist_item_form_view_inherit_vendor" model="ir.ui.view">
+            <field name="name">product.pricelist.item.form.inherit.vendor</field>
+            <field name="model">product.pricelist.item</field>
+            <field name="inherit_id" ref="product.product_pricelist_item_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='applied_on']" position="after">
+                    <field name="vendor_id" options="{'no_create':1}" attrs="{
+                                    'invisible':[('applied_on', '!=', '5_product_vendor')],
+                                    'required':[('applied_on', '=', '5_product_vendor')]}"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

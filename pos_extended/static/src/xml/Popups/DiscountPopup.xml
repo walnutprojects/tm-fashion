@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="DiscountPopup" owl="1" t-inherit="point_of_sale.NumberPopup" t-inherit-mode="primary">
+        <xpath expr="//div[hasclass('popup-number')]" position="attributes">
+            <attribute name="class">popup popup-number popup-discount</attribute>
+        </xpath>
+        <xpath expr="//header" position="after">
+            <select name="discount-type" t-model="state.inputDiscountType" t-ref="input-discount-type">
+                <option value="percentage">Percentage</option>
+                <option value="fixed">Fixed</option>
+            </select>
+        </xpath>
+    </t>
+
+</templates>

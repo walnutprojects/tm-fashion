@@ -1,0 +1,26 @@
+{
+    'name': 'Product Extended',
+    'version': '15.0.1.0.0',
+    'category': 'Product',
+    'summary': 'Product Extensions',
+    'author': 'Walnut Software Solutions',
+    'website': 'https://walnutit.com',
+    'license': 'LGPL-3',
+    'depends': ['product'],
+    'data':[
+        'data/product_data.xml',
+        'security/ir.model.access.csv',
+        'security/product_security.xml',
+        'views/product_view.xml',
+        'views/product_supplier_info_view.xml',
+        'views/department_view.xml',
+        'views/tags_view.xml',
+        'views/product_label_layout_views.xml',
+        'views/label_report_template.xml',
+        'views/res_config_settings_view.xml',
+        'views/ir_sequence_view.xml',
+        'views/pricelist_view.xml'
+    ],
+    'installable': True,
+    'auto_install': False,
+}
